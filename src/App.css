@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+/* variables */
+:root {
+  /* colors */
+  --primary: #3e5172;
+  --secondary: #f9e9de;
+
+  /* font-size */
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serf;
+  background: var(--primary);
+  color: var(--secondary);
+}
+header {
+  background-color: var(--primary);
+}
+.nav-container {
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+.nav-container a {
+  color: var(--secondary);
+  text-decoration: none;
+  cursor: pointer;
+}
+.pages {
+  min-width: 320px;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.hike-article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
