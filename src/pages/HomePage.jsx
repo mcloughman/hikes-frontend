@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useHikesContext } from "../hooks/useHikesContext"
+
+// components
 import Hike from "../components/Hike"
+import HikeForm from "../components/HikeForm"
 
 const Home = () => {
-  const [hikes, setHikes] = useState(null)
-
+  const { hikes, dispatch } = useHikesContext()
   useEffect(() => {
     const fetchHikes = async () => {
       const response = await fetch("http://localhost:4000/api/hikes")
       const hikes = await response.json()
       console.log(hikes)
       if (response.ok) {
-        setHikes(hikes)
+        dispatch({ type: "SET_HIKES", payload: hikes })
       }
     }
     fetchHikes()
@@ -20,6 +23,7 @@ const Home = () => {
       <div className="hikes">
         {hikes && hikes.map((hike) => <Hike key={hike._id} hike={hike} />)}
       </div>
+      <HikeForm />
     </div>
   )
 }
