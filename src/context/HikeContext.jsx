@@ -12,6 +12,11 @@ export const hikesReducer = (state, action) => {
       return {
         hikes: [action.payload, ...state.hikes],
       }
+    case "DELETE_HIKE":
+      return {
+        hikes: state.hikes.filter((hike) => hike._id !== action.payload._id),
+      }
+
     default:
       return state
   }
