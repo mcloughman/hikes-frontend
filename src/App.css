@@ -6,7 +6,7 @@
   /* colors */
   --primary: #3e5172;
   --secondary: #f9e9de;
-
+  --error: red;
   /* font-size */
 }
 
@@ -16,8 +16,8 @@ body {
   background: var(--primary);
   color: var(--secondary);
 }
-header {
-  background-color: var(--primary);
+.header {
+  background-color: var(--secondary);
 }
 .nav-container {
   max-width: 1400px;
@@ -28,7 +28,7 @@ header {
   margin: auto;
 }
 .nav-container a {
-  color: var(--secondary);
+  color: var(--primary);
   text-decoration: none;
   cursor: pointer;
 }
@@ -38,15 +38,68 @@ header {
   max-width: 1400px;
   margin: 0 auto;
 }
+.hikes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
 .hike-article {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+}
+.hike-article > p {
+  text-align: center;
+  max-width: 90%;
+}
+.hike-article > .article-img {
+  width: 300px;
+}
+.read-more {
+  color: var(--secondary);
+  text-decoration: none;
+  font-style: italic;
 }
 .form {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  margin: 0 auto;
+  margin: 2em auto;
   max-width: 800px;
+}
+.form > h2 {
+  align-self: center;
+}
+.error {
+  color: var(--error);
+}
+input.error,
+text {
+  border: 5px solid var(--error);
+}
+input[type="number"] {
+  width: 30px;
+}
+.form > .add-btn {
+  display: block;
+  background: coral;
+  height: 50px;
+}
+.fa-trash-can {
+  cursor: pointer;
+  align-self: center;
+}
+
+.single-hike-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas: "img ";
+}
+
+.single-hike-img {
+  width: 90%;
+  align-self: center;
+}
+.rating-stars {
+  color: #cc6c5c;
 }

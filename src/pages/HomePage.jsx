@@ -17,7 +17,7 @@ const Home = () => {
       }
     }
     fetchHikes()
-  }, [])
+  }, [dispatch])
   return (
     <div className="home">
       <div className="hikes">

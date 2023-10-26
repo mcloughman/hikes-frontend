@@ -10,6 +10,7 @@ const HikeForm = () => {
     rating: 0,
   })
   const [error, setError] = useState(null)
+  const [emptyFields, setEmptyFields] = useState([])
 
   const handleFormData = (e) => {
     const { name, value } = e.target
@@ -27,13 +28,16 @@ const HikeForm = () => {
         "Content-Type": "application/json",
       },
     })
+    console.log(response)
     const hike = await response.json()
-    console.log(hike)
     if (!response.ok) {
       setError(hike.error)
+      setEmptyFields(hike.emptyFields)
+      console.log(emptyFields)
     }
     if (response.ok) {
       setError(null)
+      setEmptyFields([])
       console.log("New hike added")
       setHikeData({
         title: "",
@@ -47,7 +51,7 @@ const HikeForm = () => {
   }
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <h3>Add New Hike</h3>
+      <h2>Add New Hike</h2>
       <label htmlFor="title">Title</label>
       <input
         type="text"
@@ -55,6 +59,7 @@ const HikeForm = () => {
         id="title"
         value={hikeData.title}
         onChange={handleFormData}
+        className={emptyFields.includes("title") ? "error" : ""}
       />
       <label htmlFor="image">Image URL</label>
       <input
@@ -63,6 +68,7 @@ const HikeForm = () => {
         id="image"
         value={hikeData.image}
         onChange={handleFormData}
+        className={emptyFields.includes("image") ? "error" : ""}
       />
       <label htmlFor="rating">Rating</label>
       <input
@@ -74,6 +80,7 @@ const HikeForm = () => {
         id="rating"
         value={hikeData.rating}
         onChange={handleFormData}
+        className={emptyFields.includes("rating") ? "error" : ""}
       />
       <label htmlFor="description">Description</label>
       <textarea
@@ -82,8 +89,9 @@ const HikeForm = () => {
         id="description"
         value={hikeData.description}
         onChange={handleFormData}
+        className={emptyFields.includes("description") ? "error" : ""}
       />
-      <button>Add Hike</button>
+      <button className="add-btn">Add Hike</button>
       {error && <div className="error">{error}</div>}
     </form>
   )

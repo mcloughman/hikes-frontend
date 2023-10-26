@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import Navbar from "./components/Navbar"
+import SingleHike from "./components/SingleHike"
 import "./App.css"
 const crabbyPhoto =
   "https://res.cloudinary.com/mrjiggyfly/image/upload/v1602545913/Crabby%20Appleton/IMG_9128_qdlrli.jpg"
@@ -15,6 +16,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/:id" element={<SingleHike />} />
           </Routes>
         </div>
       </BrowserRouter>

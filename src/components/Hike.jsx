@@ -1,4 +1,5 @@
 import { useHikesContext } from "../hooks/useHikesContext"
+import { Link } from "react-router-dom"
 const Hike = ({ hike }) => {
   const { dispatch } = useHikesContext()
   const { title, rating, image, description } = hike
@@ -15,6 +16,13 @@ const Hike = ({ hike }) => {
       dispatch({ type: "DELETE_HIKE", payload: deletedHike })
     }
   }
+  const truncated = (inputString, maxLength) => {
+    const truncated = inputString.substring(0, maxLength)
+    const lastSpaceIndex = truncated.lastIndexOf(" ")
+    return lastSpaceIndex !== -1
+      ? truncated.substring(0, lastSpaceIndex)
+      : truncated
+  }
   return (
     <article className="hike-article">
       <header className="hike-header">
@@ -22,10 +30,15 @@ const Hike = ({ hike }) => {
           {title} ----- <span>{rating}</span>
         </h3>
       </header>
-      <img src={image} width="300px" />
-      <p>{description}</p>
+      <img src={image} className="article-img" />
+      <p className="article--p">
+        {truncated(description, 75)}...
+        <Link className="read-more" to={`/${hike._id}`}>
+          Read more
+        </Link>
+      </p>
 
-      <i class="fa-solid fa-trash-can" onClick={handleDelete}></i>
+      <i className="fa-solid fa-trash-can" onClick={handleDelete}></i>
     </article>
   )
 }
