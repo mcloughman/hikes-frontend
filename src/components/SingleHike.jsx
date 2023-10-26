@@ -1,11 +1,9 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useHikesContext } from "../hooks/useHikesContext"
-import UpdateHikeForm from "./UpdateHikeForm"
 import Rating from "./Rating"
 
 const SingleHike = () => {
-  const [showUpdateForm, setShowUpdateForm] = useState(false)
   const { hikes } = useHikesContext()
   console.log(hikes)
   const { id } = useParams()
@@ -18,23 +16,19 @@ const SingleHike = () => {
   }
 
   return (
-    <div className="single-hike-container" id="top">
-      <img src={hike.image} className="single-hike-img" />
-
-      <div className="title-description">
+    <article className="single-hike-article hike-article" id="top">
+      <header className="hike-header single-hike-header">
         <h1>
           {hike.title} <Rating numStars={hike.rating} />
         </h1>
+      </header>
+
+      <img src={hike.image} className="single-hike-img" />
+
+      <div className="hike-body single-hike-body">
         <p>{hike.description}</p>
-        {showUpdateForm && <UpdateHikeForm hike={hike} />}
-        <button
-          onClick={() => setShowUpdateForm(true)}
-          className="update-btn mern-btn"
-        >
-          Update Hike
-        </button>
       </div>
-    </div>
+    </article>
   )
 }
 

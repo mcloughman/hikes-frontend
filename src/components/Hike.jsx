@@ -1,8 +1,9 @@
 import { useHikesContext } from "../hooks/useHikesContext"
+import formatDistanceToNow from "date-fns/formatDistanceToNow"
 import { Link } from "react-router-dom"
 const Hike = ({ hike }) => {
   const { dispatch } = useHikesContext()
-  const { title, rating, image, description } = hike
+  const { title, rating, image, description, createdAt } = hike
   console.log(image)
   const handleDelete = async () => {
     const response = await fetch(
@@ -31,11 +32,14 @@ const Hike = ({ hike }) => {
         </h3>
       </header>
       <img src={image} className="article-img" />
-      <p className="article--p">
+      <p className="article-p">
         {truncated(description, 75)}...
         <Link className="read-more" to={`/${hike._id}`}>
           Read more
         </Link>
+      </p>
+      <p className="created-at-p">
+        {formatDistanceToNow(new Date(createdAt))} ago
       </p>
 
       <i className="fa-solid fa-trash-can" onClick={handleDelete}></i>
