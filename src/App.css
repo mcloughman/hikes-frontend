@@ -44,6 +44,13 @@ body {
 .signup-link {
   margin-right: 2em;
 }
+.logout-btn {
+  border: none;
+  font-size: 1rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding-top: 3px;
+}
 
 .pages {
   min-width: 320px;
