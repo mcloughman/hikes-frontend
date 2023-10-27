@@ -28,7 +28,7 @@ body {
 .nav-container {
   max-width: 1400px;
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
   width: 90%;
   margin: auto;
@@ -38,6 +38,13 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+.nav-container .link {
+  margin-right: auto;
+}
+.signup-link {
+  margin-right: 2em;
+}
+
 .pages {
   min-width: 320px;
   max-width: 1400px;
@@ -76,6 +83,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  width: 96%;
   margin: 2em auto;
   max-width: 800px;
 }
@@ -92,13 +100,26 @@ text {
 input[type="number"] {
   width: 50px;
 }
-.form > .add-btn {
+.form > button {
   background: coral;
-  padding: 1.5em 5em;
+  padding: 1em 3em;
   align-self: center;
-  font-size: 1rem;
   border-radius: 5px;
   border: none;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.signup-form,
+.login-form {
+  max-width: 400px;
+  text-align: center;
+}
+.signup-form > input,
+.login-form > input {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1em;
 }
 .fa-trash-can {
   cursor: pointer;

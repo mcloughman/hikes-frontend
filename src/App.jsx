@@ -2,11 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import Navbar from "./components/Navbar"
 import SingleHike from "./components/SingleHike"
+import Login from "./pages/Login"
+import Signup from "./pages/Signup"
 import "./App.css"
-const crabbyPhoto =
-  "https://res.cloudinary.com/mrjiggyfly/image/upload/v1602545913/Crabby%20Appleton/IMG_9128_qdlrli.jpg"
-
-const link = "https://photos.app.goo.gl/AEiX2EJtMZq9Pn4p8"
 
 function App() {
   return (
@@ -16,6 +14,8 @@ function App() {
         <div className="pages">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/:id" element={<SingleHike />} />
           </Routes>
         </div>

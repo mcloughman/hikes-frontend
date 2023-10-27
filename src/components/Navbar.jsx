@@ -7,6 +7,10 @@ const Navbar = () => {
         <Link to="/" className="link">
           <h1>Hikes</h1>
         </Link>
+        <Link to="/signup" className="signup-link">
+          Signup
+        </Link>
+        <Link to="/Login">Login</Link>
       </nav>
     </header>
   )
