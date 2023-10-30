@@ -1,8 +1,12 @@
 import { useState } from "react"
 import { useHikesContext } from "../hooks/useHikesContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const HikeForm = () => {
   const { dispatch } = useHikesContext()
+
+  const { user } = useAuthContext()
+
   const [hikeData, setHikeData] = useState({
     title: "",
     description: "",
@@ -21,11 +25,16 @@ const HikeForm = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!user) {
+      setError("You must be logged in!")
+      return
+    }
     const response = await fetch("http://localhost:4000/api/hikes", {
       method: "POST",
       body: JSON.stringify(hikeData),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     })
     console.log(response)
