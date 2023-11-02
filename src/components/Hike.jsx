@@ -1,6 +1,6 @@
 import { useHikesContext } from "../hooks/useHikesContext"
 import formatDistanceToNow from "date-fns/formatDistanceToNow"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 const Hike = ({ hike }) => {
   const { dispatch } = useHikesContext()
@@ -11,6 +11,8 @@ const Hike = ({ hike }) => {
     if (!user) {
       return
     }
+    // Optimistic UI suggested by AI. The Ninja doesn't use it in his application. But without it, I wasn't able to update the front without refreshing the app
+    dispatch({ type: "DELETE_HIKE", payload: hike })
     const response = await fetch(
       `http://localhost:4000/api/hikes/${hike._id}`,
       {
@@ -21,11 +23,10 @@ const Hike = ({ hike }) => {
       }
     )
 
-    const deletedHike = await response.json()
-    console.log(deletedHike.error)
+    const json = await response.json()
 
     if (response.ok) {
-      dispatch({ type: "DELETE_HIKE", payload: deletedHike })
+      console.log(response)
     }
   }
   const truncated = (inputString, maxLength) => {
@@ -53,7 +54,9 @@ const Hike = ({ hike }) => {
         {formatDistanceToNow(new Date(createdAt))} ago
       </p>
 
-      <i className="fa-solid fa-trash-can" onClick={handleDelete}></i>
+      {user && user.userId === hike.user_id && (
+        <i className="fa-solid fa-trash-can" onClick={handleDelete}></i>
+      )}
     </article>
   )
 }

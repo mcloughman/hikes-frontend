@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { useHikesContext } from "../hooks/useHikesContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 
@@ -6,6 +7,7 @@ const HikeForm = () => {
   const { dispatch } = useHikesContext()
 
   const { user } = useAuthContext()
+  const navigate = useNavigate()
 
   const [hikeData, setHikeData] = useState({
     title: "",
@@ -56,11 +58,12 @@ const HikeForm = () => {
       })
       // this should cause a rerender of the home page which should now include the new workout without another fetch
       dispatch({ type: "CREATE_HIKE", payload: hike })
+      navigate("/")
     }
   }
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <h2>Add New Hike</h2>
+      <h2>New Hike</h2>
       <label htmlFor="title">Title</label>
       <input
         type="text"
@@ -83,7 +86,7 @@ const HikeForm = () => {
       <input
         type="number"
         step="0.5"
-        min="0"
+        min="0.5"
         max="5"
         name="rating"
         id="rating"
@@ -93,7 +96,8 @@ const HikeForm = () => {
       />
       <label htmlFor="description">Description</label>
       <textarea
-        rows="5"
+        maxlength="2500"
+        rows="10"
         name="description"
         id="description"
         value={hikeData.description}

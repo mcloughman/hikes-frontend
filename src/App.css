@@ -28,7 +28,7 @@ body {
 .nav-container {
   max-width: 1400px;
   display: flex;
-
+  justify-content: space-between;
   align-items: center;
   width: 90%;
   margin: auto;
@@ -38,8 +38,11 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-.nav-container .link {
-  margin-right: auto;
+
+.nav-container a,
+.nav-container button {
+  font-size: 1rem;
+  padding-top: 3px;
 }
 .signup-link {
   margin-right: 2em;
@@ -56,6 +59,7 @@ body {
   color: var(--primary);
   font-size: 14px;
   font-style: italic;
+  display: none;
 }
 
 .pages {
@@ -66,8 +70,10 @@ body {
 .hikes {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 15px;
 }
 .hike-article {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -76,14 +82,15 @@ body {
 .hike-article header h1 {
   font-size: var(--h1);
 }
-.hike-article > p {
-  text-align: center;
-  width: 90%;
-}
+
 .hike-article > .article-img {
   width: 300px;
 }
-.hike-article .created-at {
+p.article-p {
+  margin: 1.5em 0.5em;
+  max-width: 400px;
+}
+p.created-at-p {
   font-size: 12px;
   opacity: 0.8;
 }
@@ -105,17 +112,25 @@ body {
 }
 .error {
   color: var(--error);
+  text-align: center;
+  font-size: 1.5rem;
 }
-input.error,
-text {
+input,
+textarea {
+  font-size: 1rem;
+}
+input.error {
   border: 5px solid var(--error);
 }
+
 input[type="number"] {
   width: 50px;
+  font-size: 1rem;
 }
 .form > button {
-  background: coral;
-  padding: 1em 3em;
+  background: #cc6c5c;
+  color: var(--secondary);
+  padding: 0.5em 1em;
   align-self: center;
   border-radius: 5px;
   border: none;
@@ -165,11 +180,30 @@ input[type="number"] {
   font-size: var(--p);
   line-height: 1.5em;
   letter-spacing: 0.1em;
+  text-align: center;
+}
+.update-btn {
+  grid-area: button;
+  background-color: #cc6c5c;
+  color: var(--secondary);
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.hidden {
+  display: none;
 }
 @media screen and (min-width: 600px) {
   :root {
     --p: 18px;
     --h1: 2.25rem;
+  }
+  .nav-container a,
+  .nav-container button {
+    font-size: 1.25rem;
   }
   .single-hike-body {
     line-height: 1.25em;
@@ -179,15 +213,24 @@ input[type="number"] {
     display: inline;
     padding-left: 20px;
   }
+  .user-email-span {
+    display: inline;
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .single-hike-article {
     margin: 3em 2em;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 550px 600px 20px;
+    justify-items: center;
     grid-template-areas:
-      "img header"
-      "img body";
+      "img header ."
+      "img body ."
+      ". button .";
+  }
+
+  .hidden {
+    display: none;
   }
 }

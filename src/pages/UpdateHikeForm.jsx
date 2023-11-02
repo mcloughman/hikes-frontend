@@ -9,7 +9,9 @@ const UpdateHikeForm = ({ hike }) => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     title: hike.title,
+    rating: hike.rating,
     description: hike.description,
+    image: hike.image,
     // other form fields...
   })
 
@@ -57,8 +59,8 @@ const UpdateHikeForm = ({ hike }) => {
   }
   return (
     <>
-      <form onSubmit={handleSubmit} className="form">
-        <h3>Update Hike</h3>
+      <form onSubmit={handleSubmit} className="form update-hike-form">
+        <h2>Update Hike</h2>
         {authError && <h4 className="error">{authError}</h4>}
         <label htmlFor="title">Title</label>
         <input
@@ -68,6 +70,27 @@ const UpdateHikeForm = ({ hike }) => {
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           className={emptyFields.includes("title") ? "error" : ""}
+        />
+        <label htmlFor="image">Image URL</label>
+        <input
+          type="text"
+          name="image"
+          id="image"
+          value={formData.image}
+          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+          className={emptyFields.includes("image") ? "error" : ""}
+        />
+        <label htmlFor="rating">Rating: </label>
+        <input
+          type="number"
+          name="rating"
+          id="rating"
+          step="0.5"
+          min="0.5"
+          max="5"
+          value={formData.rating}
+          onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
+          className={emptyFields.includes("rating") ? "error" : ""}
         />
         <label htmlFor="description">Description</label>
         <textarea
@@ -80,22 +103,11 @@ const UpdateHikeForm = ({ hike }) => {
           }
           className={emptyFields.includes("description") ? "error" : ""}
         />
-        <label htmlFor="rating">Rating: </label>
-
-        <input
-          type="number"
-          name="rating"
-          id="rating"
-          value={formData.rating || ""}
-          onChange={(e) =>
-            setFormData({ ...formData, rating: parseInt(e.target.value) || "" })
-          }
-          className={`rating ${emptyFields.includes("rating") ? "error" : ""}`}
-        />
 
         <button type="submit" className="submit-btn">
-          Submit
+          Update Hike
         </button>
+        {error && <div className="error">{error}</div>}
       </form>
     </>
   )

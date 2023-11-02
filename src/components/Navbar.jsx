@@ -1,11 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useLogout } from "../hooks/useLogout"
+import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const { logout } = useLogout()
   const { user } = useAuthContext()
-  const handleClick = () => logout()
+  const location = useLocation()
+  const handleClick = () => {
+    navigate("/")
+    logout()
+  }
+  // Function to determine if the user is on the HikeForm page
+  const isOnHikeFormPage = location.pathname === "/hike-form"
   return (
     <header className="header">
       <nav className="nav-container">
@@ -13,12 +21,19 @@ const Navbar = () => {
           <h1>Hikes</h1>
         </Link>
         {user && (
-          <div className="logout-div">
-            <span className="user-email-span">Logged in as: {user.email}</span>
-            <button className="logout-btn" onClick={handleClick}>
-              Logout
-            </button>
-          </div>
+          <>
+            {!isOnHikeFormPage && (
+              <Link to="/hike-form" className="add-hike-a">
+                Add New Hike
+              </Link>
+            )}
+            <div className="logout-div">
+              <span className="user-email-span">{user.email}</span>
+              <button className="logout-btn" onClick={handleClick}>
+                Logout
+              </button>
+            </div>
+          </>
         )}
         {!user && (
           <div>

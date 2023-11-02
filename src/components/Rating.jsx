@@ -6,7 +6,7 @@ const Rating = ({ numStars }) => {
   const hasHalfStar = numStars - fullStars >= 0.5
   const stars = []
   for (let i = 0; i < fullStars; i++) {
-    stars.push(<FaStar KEY={i} />)
+    stars.push(<FaStar key={i} />)
   }
   if (hasHalfStar) {
     stars.push(<FaStarHalfAlt key="half" />)

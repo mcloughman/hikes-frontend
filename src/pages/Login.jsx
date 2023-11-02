@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
+import { useNavigate } from "react-router-dom"
 const Login = () => {
+  const navigate = useNavigate()
   const { login, isLoading, error } = useLogin()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -29,7 +31,8 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <button>Login</button>
+      <button disabled={isLoading}>Login</button>
+      {error && <div className="error">{error}</div>}
     </form>
   )
 }
