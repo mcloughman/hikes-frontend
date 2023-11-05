@@ -8,7 +8,9 @@ const Home = () => {
   const { hikes, dispatch } = useHikesContext()
   useEffect(() => {
     const fetchHikes = async () => {
-      const response = await fetch("http://localhost:4000/api/hikes")
+      const response = await fetch(
+        "https://hikes-backend-e698c568813b.herokuapp.com/api/hikes"
+      )
       const hikes = await response.json()
       if (response.ok) {
         dispatch({ type: "SET_HIKES", payload: hikes })

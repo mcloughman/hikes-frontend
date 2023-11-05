@@ -45,6 +45,7 @@ const Signup = () => {
         id="confirmPassword"
         placeholder="password"
         onChange={(e) => setConfirmPassword(e.target.value)}
+        value={confirmPassword}
       />
       <button disabled={isLoading}>Signup</button>
       {isError && <div className="error">{isError}</div>}

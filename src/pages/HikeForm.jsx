@@ -31,14 +31,17 @@ const HikeForm = () => {
       setError("You must be logged in!")
       return
     }
-    const response = await fetch("http://localhost:4000/api/hikes", {
-      method: "POST",
-      body: JSON.stringify(hikeData),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    })
+    const response = await fetch(
+      "https://hikes-backend-e698c568813b.herokuapp.com/api/hikes",
+      {
+        method: "POST",
+        body: JSON.stringify(hikeData),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    )
     console.log(response)
     const hike = await response.json()
     if (!response.ok) {

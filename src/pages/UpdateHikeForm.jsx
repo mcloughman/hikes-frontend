@@ -28,7 +28,7 @@ const UpdateHikeForm = ({ hike }) => {
     // Send PATCH request to update hike data
     try {
       const response = await fetch(
-        `http://localhost:4000/api/hikes/${hike._id}`,
+        `https://hikes-backend-e698c568813b.herokuapp.com/api/hikes/${hike._id}`,
         {
           method: "PATCH",
           headers: {
