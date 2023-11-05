@@ -89,6 +89,8 @@ body {
 p.article-p {
   margin: 1.5em 0.5em;
   max-width: 400px;
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
 }
 p.created-at-p {
   font-size: 12px;
@@ -205,7 +207,8 @@ input[type="number"] {
   .nav-container button {
     font-size: 1.25rem;
   }
-  .single-hike-body {
+  .single-hike-body,
+  p.article-p {
     line-height: 1.25em;
     letter-spacing: 0;
   }
