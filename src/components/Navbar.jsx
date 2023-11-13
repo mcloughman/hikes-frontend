@@ -37,6 +37,7 @@ const Navbar = () => {
         )}
         {!user && (
           <div>
+            <span>Login to Add a Hike</span>
             <Link to="/signup" className="signup-link">
               Signup
             </Link>
