@@ -33,7 +33,8 @@ body {
   width: 90%;
   margin: auto;
 }
-.nav-container a {
+.nav-container a,
+span {
   color: var(--primary);
   text-decoration: none;
   cursor: pointer;
