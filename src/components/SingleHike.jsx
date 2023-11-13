@@ -16,6 +16,7 @@ const SingleHike = () => {
   if (!hike) {
     return <p>Hike not found</p>
   }
+  // Need to declare match outside of the block, else a user that's not logged in might not have access to get route for single hike
   let match
   if (user) {
     match = hike.user_id === user.userId

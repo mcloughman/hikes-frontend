@@ -38,3 +38,4 @@ export const HikesContextProvider = ({ children }) => {
     </HikesContext.Provider>
   )
 }
+  

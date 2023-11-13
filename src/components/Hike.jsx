@@ -14,7 +14,7 @@ const Hike = ({ hike }) => {
     // Optimistic UI suggested by AI. The Ninja doesn't use it in his application. But without it, I wasn't able to update the front without refreshing the app
     dispatch({ type: "DELETE_HIKE", payload: hike })
     const response = await fetch(
-      `http://localhost:4000/api/hikes/${hike._id}`,
+      `https://hikes-backend-e698c568813b.herokuapp.com/api/hikes${hike._id}`,
       {
         method: "DELETE",
         headers: {

@@ -9,7 +9,7 @@
   --error: red;
   /* font-size */
   --h1: 2rem;
-  --p: 0.875rem;
+  --p: 1rem;
 }
 button,
 a {
@@ -98,7 +98,6 @@ p.created-at-p {
 }
 .read-more {
   color: var(--secondary);
-  text-decoration: none;
   font-style: italic;
 }
 .form {
@@ -182,7 +181,6 @@ input[type="number"] {
   font-size: var(--p);
   line-height: 1.5em;
   letter-spacing: 0.1em;
-  text-align: center;
 }
 .update-btn {
   grid-area: button;
