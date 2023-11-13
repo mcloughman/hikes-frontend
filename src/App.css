@@ -89,7 +89,6 @@ body {
 p.article-p {
   margin: 1.5em 0.5em;
   max-width: 400px;
-  letter-spacing: 0.1em;
   line-height: 1.5em;
 }
 p.created-at-p {
