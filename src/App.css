@@ -38,7 +38,9 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-
+.nav-container p {
+  color: var(--primary);
+}
 .nav-container a,
 .nav-container button {
   font-size: 1rem;

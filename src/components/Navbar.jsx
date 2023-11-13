@@ -20,7 +20,7 @@ const Navbar = () => {
         <Link to="/" className="link">
           <h1>Hikes</h1>
         </Link>
-        {!user && <li className="nav-li">Login to Add a Hike</li>}
+        {!user && <p className="nav-li">Login to Add a Hike</p>}
         {user && (
           <>
             {!isOnHikeFormPage && (
