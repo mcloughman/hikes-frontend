@@ -40,6 +40,9 @@ body {
 }
 .nav-container p {
   color: var(--primary);
+  font-style: italic;
+  text-align: center;
+  font-size: 0.875rem;
 }
 .nav-container a,
 .nav-container button {
@@ -203,8 +206,12 @@ input[type="number"] {
     --h1: 2.25rem;
   }
   .nav-container a,
-  .nav-container button {
+  .nav-container button,
+  .nav-container p {
     font-size: 1.25rem;
+  }
+  .nav-container p {
+    font-style: normal;
   }
   .single-hike-body,
   p.article-p {

@@ -20,7 +20,6 @@ const Navbar = () => {
         <Link to="/" className="link">
           <h1>Hikes</h1>
         </Link>
-        {!user && <p className="nav-li">Login to Add a Hike</p>}
         {user && (
           <>
             {!isOnHikeFormPage && (
@@ -37,14 +36,12 @@ const Navbar = () => {
           </>
         )}
         {!user && (
-          <>
-            <div>
-              <Link to="/signup" className="signup-link">
-                Signup
-              </Link>
-              <Link to="/Login">Login</Link>
-            </div>
-          </>
+          <div>
+            <Link to="/signup" className="signup-link">
+              Signup
+            </Link>
+            <Link to="/Login">Login</Link>
+          </div>
         )}
       </nav>
     </header>
