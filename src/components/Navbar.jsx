@@ -20,6 +20,7 @@ const Navbar = () => {
         <Link to="/" className="link">
           <h1>Hikes</h1>
         </Link>
+
         {user && (
           <>
             {!isOnHikeFormPage && (
