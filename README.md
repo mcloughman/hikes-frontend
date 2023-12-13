@@ -16,13 +16,6 @@ This repository contains the frontend of a MERN app focused on hikes. It is base
 
 The backend of this MERN app is hosted on Heroku, while the frontend is deployed on Netlify.
 
-## Getting Started
-
-To run the app locally, follow these steps:
-
-1. Clone this repository.
-2. Install dependencies using `npm install`.
-3. Start the development server with `npm start`.
 
 ## Technologies Used
 
