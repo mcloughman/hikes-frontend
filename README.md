@@ -12,6 +12,7 @@ This repository contains the frontend of a MERN app focused on hikes. It is base
 
 - **Cloudinary Integration for Hike Photos:** Hike photos are stored in Cloudinary, enhancing the app's performance and ensuring a seamless user experience.
 
+
 ## Deployment
 
 The backend of this MERN app is hosted on Heroku, while the frontend is deployed on Netlify.
