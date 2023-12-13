@@ -1,4 +1,4 @@
-# MERN Hikes Front End
+# MERN Hikes Frontend
 
 ## This is the frontend of a MERN app based on the Net Ninja YouTube series. While the Net Ninja uses a simple single page workout buddy as the subject, this app pertains to hikes.
 - Authentication and Authorization incorporated on the backend using Bcrypt along with JSON Web Token. While the series required authorization to access all routes, this app only protects the NON GET routes
