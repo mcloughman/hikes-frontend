@@ -8,6 +8,7 @@ const Signup = () => {
   const { signup, isLoading, error } = useSignup()
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsError(null)
     console.log(password, confirmPassword)
     if (password !== confirmPassword) {
       setIsError("Password Confirmation Failed!")
@@ -36,8 +37,10 @@ const Signup = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <label htmlFor="confirmPassword" className="form-label"></label>
-      Confirm Password
+      <label htmlFor="confirmPassword" className="form-label">
+        Confirm Password
+      </label>
+
       <input
         className="form-input"
         type="password"
