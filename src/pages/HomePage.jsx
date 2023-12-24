@@ -7,7 +7,7 @@ import Hike from "../components/Hike"
 const Home = () => {
   const { hikes, dispatch } = useHikesContext()
   const [loading, setLoading] = useState(false)
-
+  const [error, setError] = useState(false)
   useEffect(() => {
     setLoading(true)
     const fetchHikes = async () => {
@@ -23,12 +23,14 @@ const Home = () => {
       } catch (e) {
         console.log(e)
         setLoading(false)
+        setError(true)
       }
     }
     fetchHikes()
   }, [dispatch])
   return (
     <>
+      {error && <h3>Oh no! Failed to Fetch</h3>}
       {loading ? (
         <h1>Loading...</h1>
       ) : (
